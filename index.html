@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PrestonTrollz | Socials</title>
 
+  <!-- ⭐ Custom Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -12,7 +15,7 @@
     * {
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
-      cursor: none; /* custom cursor */
+      cursor: none;
     }
 
     html, body {
@@ -21,8 +24,6 @@
 
     body {
       margin: 0;
-      padding: 0;
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -39,9 +40,9 @@
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      transition: transform 0.1s ease;
       z-index: 9999;
       box-shadow: 0 0 12px #00eaff;
+      transition: transform 0.1s ease;
     }
 
     .cursor.active {
@@ -49,31 +50,23 @@
       background: rgba(0, 234, 255, 0.3);
     }
 
-    /* Mobile safe-area fix */
-    @supports (-webkit-touch-callout: none) {
-      body {
-        min-height: -webkit-fill-available;
-      }
-    }
-
     .card {
-      background: rgba(10, 15, 22, 0.75);
+      background: rgba(10, 15, 22, 0.8);
       backdrop-filter: blur(14px);
       border-radius: 22px;
       padding: 36px 32px;
-      width: 100%;
       max-width: 420px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+      width: 100%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.85);
       text-align: center;
     }
 
-    /* Animated Glow Ring */
+    /* Glow Avatar */
     .avatar-wrapper {
       position: relative;
       width: 120px;
       height: 120px;
       margin: 0 auto 15px;
-      border-radius: 50%;
     }
 
     .avatar-wrapper::before {
@@ -87,30 +80,48 @@
     }
 
     @keyframes glow {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
     }
 
     .avatar {
       width: 110px;
       height: 110px;
       border-radius: 50%;
-      object-fit: cover;
-      background: #000;
       position: relative;
       z-index: 1;
+      object-fit: cover;
     }
 
     h1 {
       font-size: 26px;
-      font-weight: 700;
       margin-bottom: 6px;
     }
 
     .tagline {
       font-size: 14px;
       opacity: 0.75;
-      margin-bottom: 28px;
+      margin-bottom: 18px;
+    }
+
+    /* 🎮 Roblox Status Badge */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 22px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffaa00;
+      box-shadow: 0 0 8px #ffaa00;
     }
 
     .links {
@@ -119,24 +130,22 @@
       gap: 15px;
     }
 
-    /* Buttons + Ripple */
     .link-btn {
       position: relative;
       overflow: hidden;
-      text-decoration: none;
-      color: #fff;
-      background: linear-gradient(135deg, #00cfff, #005eff);
       padding: 15px;
       border-radius: 14px;
+      background: linear-gradient(135deg, #00cfff, #005eff);
+      color: #fff;
+      text-decoration: none;
       font-weight: 600;
-      font-size: 15px;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.6);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .link-btn:hover {
       transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 22px 45px rgba(0,0,0,0.9);
     }
 
     .link-btn span {
@@ -144,14 +153,11 @@
       border-radius: 50%;
       transform: scale(0);
       animation: ripple 600ms linear;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255,255,255,0.5);
     }
 
     @keyframes ripple {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
+      to { transform: scale(4); opacity: 0; }
     }
 
     footer {
@@ -163,18 +169,22 @@
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div class="cursor"></div>
 
   <div class="card">
 
-    <!-- Avatar -->
     <div class="avatar-wrapper">
-      <img src="https://via.placeholder.com/200" alt="Avatar" class="avatar">
+      <img src="https://via.placeholder.com/200" class="avatar" alt="Avatar">
     </div>
 
     <h1>PrestonTrollz</h1>
     <p class="tagline">Content Creator • Gaming • Roleplay</p>
+
+    <!-- Roblox Status -->
+    <div class="status">
+      <div class="dot"></div>
+      Roblox Server: <span id="statusText">Checking...</span>
+    </div>
 
     <div class="links">
       <a href="https://www.youtube.com/@PrestonTrollz" target="_blank" class="link-btn">🎥 YouTube</a>
@@ -182,45 +192,46 @@
       <a href="https://discord.gg/AwSBvfgugC" target="_blank" class="link-btn">💬 Discord</a>
     </div>
 
-    <footer>
-      © 2026 PrestonTrollz • All Rights Reserved
-    </footer>
-
+    <footer>© 2026 PrestonTrollz</footer>
   </div>
 
   <!-- Click Sound -->
   <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3"></audio>
 
-  <!-- JS -->
   <script>
     const cursor = document.querySelector('.cursor');
     const clickSound = document.getElementById('clickSound');
+    const statusText = document.getElementById('statusText');
 
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
 
-    document.querySelectorAll('.link-btn').forEach(button => {
-      button.addEventListener('mouseenter', () => cursor.classList.add('active'));
-      button.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    document.querySelectorAll('.link-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => cursor.classList.add('active'));
+      btn.addEventListener('mouseleave', () => cursor.classList.remove('active'));
 
-      button.addEventListener('click', function (e) {
+      btn.addEventListener('click', e => {
         clickSound.currentTime = 0;
         clickSound.play();
 
         const circle = document.createElement('span');
-        const diameter = Math.max(this.clientWidth, this.clientHeight);
-        const radius = diameter / 2;
-
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${e.clientX - this.getBoundingClientRect().left - radius}px`;
-        circle.style.top = `${e.clientY - this.getBoundingClientRect().top - radius}px`;
-
-        this.querySelector('span')?.remove();
-        this.appendChild(circle);
+        const d = Math.max(btn.clientWidth, btn.clientHeight);
+        circle.style.width = circle.style.height = d + 'px';
+        circle.style.left = e.clientX - btn.getBoundingClientRect().left - d/2 + 'px';
+        circle.style.top = e.clientY - btn.getBoundingClientRect().top - d/2 + 'px';
+        btn.querySelector('span')?.remove();
+        btn.appendChild(circle);
       });
     });
+
+    // Roblox status placeholder (ready for real API)
+    setTimeout(() => {
+      statusText.textContent = "Online";
+      document.querySelector('.dot').style.background = "#00ff9d";
+      document.querySelector('.dot').style.boxShadow = "0 0 8px #00ff9d";
+    }, 1200);
   </script>
 
 </body>
