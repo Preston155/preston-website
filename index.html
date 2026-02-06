@@ -10,29 +10,40 @@
 
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
+      margin: 0;
+      padding: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       display: flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
+    }
+
+    /* Mobile browser safe-area fix */
+    @supports (-webkit-touch-callout: none) {
+      body {
+        min-height: -webkit-fill-available;
+      }
     }
 
     .card {
       background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(10px);
-      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
       padding: 35px 30px;
       width: 100%;
       max-width: 420px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
       text-align: center;
     }
 
@@ -48,13 +59,13 @@
     h1 {
       font-size: 26px;
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     .tagline {
       font-size: 14px;
       opacity: 0.85;
-      margin-bottom: 25px;
+      margin-bottom: 26px;
     }
 
     .links {
@@ -70,13 +81,14 @@
       padding: 14px;
       border-radius: 12px;
       font-weight: 600;
+      font-size: 15px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
     }
 
     .link-btn:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.6);
     }
 
     footer {
@@ -96,19 +108,16 @@
 <body>
 
   <div class="card">
-    <!-- Replace src with your image -->
+    <!-- Replace with your profile image -->
     <img src="https://via.placeholder.com/200" alt="Avatar" class="avatar">
 
     <h1>PrestonTrollz</h1>
     <p class="tagline">Content Creator • Gaming • Roleplay</p>
 
     <div class="links">
-      <!-- Replace the # with your real links -->
       <a href="https://www.youtube.com/@PrestonTrollz" target="_blank" class="link-btn">🎥 YouTube</a>
       <a href="https://kick.com/prestontrollz" target="_blank" class="link-btn">🎮 Kick</a>
       <a href="https://discord.gg/AwSBvfgugC" target="_blank" class="link-btn">💬 Discord</a>
-      <a href="#" target="_blank" class="link-btn">📸 Instagram</a>
-      <a href="#" target="_blank" class="link-btn">🎵 TikTok</a>
     </div>
 
     <footer>
